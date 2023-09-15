@@ -1,33 +1,48 @@
 import os
 
-def create_html(ruta_carpeta):
-    with open(os.path.join(ruta_carpeta, "index.html"), "w") as f:
-        f.write("<!DOCTYPE html>\n<html>\n<head>\n<title>Página</title>\n</head>\n<body>\n<h1>Mi Página</h1>\n</body>\n</html>")
+# ------ CREATE HTML ------
+def create_html(folder_path):
+    # Create an index.html file in the specified path
+    with open(os.path.join(folder_path, "index.html"), "w") as f:
+        f.write("<!DOCTYPE html>\n<html>\n<head>\n<title>Page</title>\n</head>\n<body>\n<h1>My Page</h1>\n</body>\n</html>")
 
-def create_css(ruta_carpeta):
-    with open(os.path.join(ruta_carpeta, "styles.css"), "w") as f:
-        f.write("/* Estilos CSS aquí */")
+# ------ CREATE CSS ------
+def create_css(folder_path):
+    # Create a styles.css file in the specified path
+    with open(os.path.join(folder_path, "styles.css"), "w") as f:
+        f.write("/* CSS styles here */")
 
-def create_JS(ruta_carpeta):
-    with open(os.path.join(ruta_carpeta, "main.js"), "w") as f:
-        f.write("// Código JavaScript aquí")
+# ------ CREATE JS ------
+def create_js(folder_path):
+    # Create a main.js file in the specified path
+    with open(os.path.join(folder_path, "main.js"), "w") as f:
+        f.write("// JavaScript code here")
 
-def create_dir(ruta_base):
-    for i in range(1,26):
-        nombre_carpeta = input(f"Pon el nombre de la carpeta {i}: ")
-        ruta_carpeta = os.path.join(ruta_base, nombre_carpeta)
+# ------ MAIN FUNCTION ------
+def create_dir(base_path):
+    # Create 25 folders
+    for i in range(1, 26):
+        # Ask the user for the folder name
+        folder_name = input(f"Enter the name for folder {i}: ")
+        
+        # Combine the base path with the folder name
+        folder_path = os.path.join(base_path, folder_name)
 
-        if not os.path.exists(ruta_carpeta):
-            os.mkdir(ruta_carpeta)
+        # If the folder doesn't exist, create it
+        if not os.path.exists(folder_path):
+            os.mkdir(folder_path)
         else:
-            print(f"La carpeta {nombre_carpeta} ya existe.")
+            print(f"The folder {folder_name} already exists.")
 
-        create_html(ruta_carpeta)
-        create_css(ruta_carpeta)
-        create_JS(ruta_carpeta)
+        # Add HTML, CSS, and JS files to each folder
+        create_html(folder_path)
+        create_css(folder_path)
+        create_js(folder_path)
 
-    print("Carpetas creadas exitosamente. Puedes iniciar tus proyectos.")
+    # Success
+    print("Folders created successfully. You can start your projects now.")
 
+# MAIN
 if __name__ == "__main__":
-    ruta_base = "/Users/hp/Documents/primer_parcial-pages"
-    create_dir(ruta_base)
+    base_path = "/Users/hp/Documents/first_midterm-pages"
+    create_dir(base_path)
